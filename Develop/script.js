@@ -13,15 +13,20 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   const timeBlockArray = ["hour-09", "hour-10", "hour-11", "hour-12", "hour-13", "hour-14", "hour-15", "hour-16", "hour-17"];
-  for (var i = 0; i < 8; i++)
+  for (var i = 0; i < timeBlockArray.length; i++)
   {
-    document.getElementById(timeBlockArray[i]).addEventListener('click', storeData.bind(this, timeBlockArray[i], document.getElementById(timeBlockArray[i]).children[1].value));
+    document.getElementById(timeBlockArray[i]).addEventListener('click', storeData.bind(this, timeBlockArray[i]));
   }
 
-  function storeData(timeBlockId, text)
+  function storeData(timeBlockId)
   {
-    localStorage.setItem(timeBlockId, text);
-    console.log("saved " + localStorage.getItem(timeBlockId) + " to " + timeBlockId + " block data");
+    appendText(timeBlockId, document.getElementById(timeBlockId).children[1].value);
+    localStorage.setItem(timeBlockId, document.getElementById(timeBlockId).children[1].value);
+  }
+
+  function appendText(timeBlockId, text)
+  {
+    document.getElementById(timeBlockId).children[1].value = text;
   }
 
 
@@ -42,7 +47,12 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  
+  for (var i = 0; i < timeBlockArray.length; i++)
+  {
+    document.getElementById(timeBlockArray[i]).children[1].innerHTML = localStorage.getItem(timeBlockArray[i]);
+  }
+
+  console.log(document.getElementById(timeBlockArray[6]).children[1].value);
 
 
   // TODO: Add code to display the current date in the header of the page.
