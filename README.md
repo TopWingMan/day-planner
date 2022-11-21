@@ -6,4 +6,7 @@ You can add different tasks to hourly time blocks.
 Time blocks are color coded to indicate wether it is in the past, present, or future.
 When you save your text it is saved into local storage and when you reload the page those changes persist.
 
+Link to live Url https://topwingman.github.io/day-planner/
+
 ![Alt text](./Assets/screenshot%20for%20day%20planner.PNG);
+
